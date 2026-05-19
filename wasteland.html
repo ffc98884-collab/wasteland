@@ -96,18 +96,10 @@ function setLoading(pct) {
   document.getElementById('loading-bar').style.width = pct + '%';
 }
 
-  async function loadModels() {
-  return new Promise((resolve) => {
-    setLoading(50);
-    resolve();
-  });
+async function loadModels() {
+  setLoading(100);
+  return Promise.resolve();
 }
-  const loader = new GLTFLoader();
-  return new Promise((resolve) => {
-    let loaded = 0;
-    const check = () => { loaded++; setLoading(loaded * 50); if (loaded === 2) resolve(); };
-    loader.load(ZOMBIE_URL, gltf => { zombieModel = gltf.scene; check(); }, null, () => { check(); });
-    loader.load(GUN_URL, gltf => { gunModel = gltf.scene; check(); }, null, () => { check(); });
   });
 }
 
