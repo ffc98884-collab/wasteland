@@ -96,8 +96,12 @@ function setLoading(pct) {
   document.getElementById('loading-bar').style.width = pct + '%';
 }
 
-async function loadModels() {
-  const { GLTFLoader } = await import('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/GLTFLoader.js');
+  async function loadModels() {
+  return new Promise((resolve) => {
+    setLoading(50);
+    resolve();
+  });
+}
   const loader = new GLTFLoader();
   return new Promise((resolve) => {
     let loaded = 0;
